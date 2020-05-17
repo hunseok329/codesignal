@@ -11,18 +11,17 @@ def minesweeper(matrix):
         matrix[i].insert(0, False)
         copy.append(matrix[i])
     copy.append(false)
-    
+
     mineList = []
     for i in range(row):
         mine = []
         for j in range(col):
-            count = 0       
+            count = 0
             if copy[i+1][j+1] == True:
                 count = -1
             for w in range(3):
-                for n in range(3):
-                    if copy[i+w][j+n] == True:
-                        count += 1
+                capy = copy[i+w][j:j+3]
+                count += capy.count(True)
             mine.append(count)
         mineList.append(mine)
     return mineList
